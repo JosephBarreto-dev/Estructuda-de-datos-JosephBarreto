@@ -1,0 +1,12 @@
+TIPO DE DATO ABSTARCTO (TDA)
+Es una manera de organizar y manejar datos.
+
+Tipos de datos abstractos relacionados con listas dinaicas simples:
+
+    Lista - Coleccion ordenada de elementos donde cada uno tiene una posición, la lista dinámica permite que la lista crezca o decrezca en tiempo de ejecución.
+
+    Pila(stack) - El ultimo elemento en entrar es el primero en salir, la lista dinámica Se implementa usando nodos conectados (tipo lista enlazada). Ideal para manejo de deshacer/rehacer, expresiones matemáticas, etc.
+
+    Cola - El primer elemento en entrar es el primero en salir, la lista dinámica permite que la cola crezca sin límite fijo.
+
+    Cola de prioridad - Similar a una cola, pero cada elemento tiene una prioridad. Se puede recorrer la lista dinámica para insertar ordenadamente según prioridad.
