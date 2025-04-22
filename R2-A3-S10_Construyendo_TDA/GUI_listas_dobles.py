@@ -42,7 +42,7 @@ class ListaClientesDoble:
                 actual.anterior = nuevo
 
         print("Cliente insertado correctamente.")
-
+        
     def listar_derecha(self):
         actual = self.inicio
         if actual is None:
@@ -67,54 +67,39 @@ class ListaClientesDoble:
         while actual:
             print(f"Cédula: {actual.cedula} | Nombre: {actual.nombre}")
             actual = actual.anterior
-
+    
 # Menú de la aplicación
-def menu():
-    lista_clientes = ListaClientesDoble()
-
-    while True:
-        print("\n--- Menú ---")
-        print("1. Insertar cliente")
-        print("2. Listar clientes hacia la derecha")
-        print("3. Listar clientes hacia la izquierda")
-        print("4. Salir")
-
-        opcion = input("Seleccione una opción: ")
-
-        if opcion == "1":
-            cedula = int(input("Ingrese la cédula del cliente: "))
-            nombre = input("Ingrese el nombre del cliente: ")
-            lista_clientes.insertar_cliente(cedula, nombre)
-
-        elif opcion == "2":
-            lista_clientes.listar_derecha()
-
-        elif opcion == "3":
-            lista_clientes.listar_izquierda()
-
-        elif opcion == "4":
-            print("Aplicación finalizada.")
-            break
-        else:
-            print("Opción no válida. Intente de nuevo.")
-
-def mostrar_resultado():
-    resultado = eval(entrada.get())
-    etiqueta_resultado.config(text=f'Resultado:{resultado}')
+lista_clientes = ListaClientesDoble()
 
 ventana = tk.Tk()
-ventana.title('Menú lista doble')
+ventana.title('Menú clientes')
 
-entrada = tk.Entry(ventana)
-entrada.pack()
+etiqueta_cedula = tk.Label(ventana, text='Cedula: ')
+etiqueta_cedula.pack()
 
-boton = tk.Button(ventana, text='Calcular', command=mostrar_resultado)
-boton.pack()
+entrada_cedula = tk.Entry(ventana)
+entrada_cedula.pack()
 
-etiqueta_resultado = tk.Label(ventana, text='Resultado: ')
-etiqueta_resultado.pack()
+etiqueta_nombre = tk.Label(ventana, text='Nombre: ')
+etiqueta_nombre.pack()
+
+entrada_nombre = tk.Entry(ventana)
+entrada_nombre.pack()
+
+def agregar_cliente_vista():
+    cedula = entrada_cedula.get()
+    nombre = entrada_nombre.get()
+    lista_clientes.insertar_cliente(cedula, nombre)
+    entrada_cedula.delete(0, tk.END)
+    entrada_nombre.delete(0, tk.END)
+    
+btn_agregar = tk.Button(ventana, text='Agregar', command= lambda: agregar_cliente_vista())
+btn_agregar.pack()
+
+btn_lista_derecha = tk.Button(ventana, text='Lista derecha', command=lista_clientes.listar_derecha)
+btn_lista_derecha.pack()
+
+btn_lista_izquierda = tk.Button(ventana, text='Lista izquierda', command=lista_clientes.listar_izquierda)
+btn_lista_izquierda.pack()
 
 ventana.mainloop()
-
-
-menu()
