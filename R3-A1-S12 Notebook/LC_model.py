@@ -1,14 +1,15 @@
 class Nodo:
-    def __init__(self, dato):
-        self.dato = dato
+    def __init__(self, cedula, nombre):
+        self.cedula = cedula
+        self.nombre = nombre
         self.siguiente = None
 
 class ListaCircular:
     def __init__(self):
         self.cabeza = None
 
-    def agregar(self, dato):
-        nuevo_nodo = Nodo(dato)
+    def agregar(self, cedula, nombre):
+        nuevo_nodo = Nodo(cedula, nombre)
 
         if not self.cabeza:
             self.cabeza = nuevo_nodo
@@ -19,3 +20,14 @@ class ListaCircular:
                 temp = temp.siguiente
             temp.siguiente = nuevo_nodo
             nuevo_nodo.siguiente = self.cabeza
+            
+    def listar(self):
+        datos = []
+        if self.cabeza:
+            temp = self.cabeza
+            while temp:
+                datos.append((temp.cedula, temp.nombre))
+                temp = temp.siguiente
+                if temp == self.cabeza:
+                    break
+        return datos
