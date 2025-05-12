@@ -29,7 +29,7 @@ class Vista:
         self.btn_agregar = tk.Button(self.cont_superior, text='Agregar', command=self.agregar)
         self.btn_agregar.pack(side='left', pady=5)
 
-        self.btn_lista_derecha = tk.Button(self.cont_superior, text='Lista derecha', command=self.listar)
+        self.btn_lista_derecha = tk.Button(self.cont_superior, text='Listar', command=self.listar)
         self.btn_lista_derecha.pack(side='left', pady=5)
 
         self.tabla = ttk.Treeview(self.cont_Inferior, columns=("cedula", "nombre"), show='headings')

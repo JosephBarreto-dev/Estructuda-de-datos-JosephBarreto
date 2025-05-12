@@ -67,7 +67,6 @@ class Vista:
         for fila in self.tabla.get_children():
             self.tabla.delete(fila)
             
-        self.controlador.ordenar_secuencial()
         clientes = self.controlador.ordenar_secuencial()
         for cedula, nombre in clientes:
             self.tabla.insert("", tk.END, values=(cedula, nombre))

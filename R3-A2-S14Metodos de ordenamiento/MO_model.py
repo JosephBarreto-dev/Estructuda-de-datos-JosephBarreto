@@ -6,6 +6,7 @@ class Nodo:
         
 class ListaClientes:
     def __init__(self):
+        self.clientes = []
         self.inicio = None
 
     def insertar_cliente(self, cedula, nombre):
@@ -17,9 +18,9 @@ class ListaClientes:
     
     # Recorre cada nodo de la lista ordenando de menor a mayor
     def ordenar_burbuja(self):
-        clientes = []
+        
         if not self.inicio or not self.inicio.siguiente:
-            return clientes
+            return self.clientes
 
         cambiado = True
         while cambiado:
@@ -34,14 +35,13 @@ class ListaClientes:
                 
         actual = self.inicio
         while actual:
-            clientes.append((actual.cedula, actual.nombre))
+            self.clientes.append((actual.cedula, actual.nombre))
             actual = actual.siguiente
 
-        return clientes
+        return self.clientes
     
     # Recorre la lista varias veces seleccionando el elemento mas pequello
     def ordenar_secuencial(self):
-        clientes = []
         if not self.inicio or not self.inicio.siguiente:
             return
 
@@ -61,14 +61,13 @@ class ListaClientes:
             
         actual = self.inicio
         while actual:
-            clientes.append((actual.cedula, actual.nombre))
+            self.clientes.append((actual.cedula, actual.nombre))
             actual = actual.siguiente
         
-        return clientes
+        return self.clientes
     
     # De dividen en dos sublistas los numero pequeños a la izquierda y los grandes a la derecha, 
     def ordenar_quicksort(self):
-        clientes = []
         def partition(start, end):
             if start == end or not start or not end:
                 return start, end
@@ -98,7 +97,7 @@ class ListaClientes:
             quicksort_recursive(next_start, end)
 
         if not self.inicio or not self.inicio.siguiente:
-            return clientes
+            return self.clientes
 
         end = self.inicio
         while end.siguiente:
@@ -108,7 +107,7 @@ class ListaClientes:
         
         actual = self.inicio
         while actual:
-            clientes.append((actual.cedula, actual.nombre))
+            self.clientes.append((actual.cedula, actual.nombre))
             actual = actual.siguiente
             
-        return clientes
+        return self.clientes
